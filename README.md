@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	op, _ := op.LoadOP()
+	op, _ := op.Load()
 	fmt.Println("当前版本", op.Ver())
 }
 ```

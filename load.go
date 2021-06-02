@@ -10,7 +10,7 @@ type opsoft struct {
 	uk *ole.IUnknown
 }
 
-func LoadOP() (*opsoft, error) {
+func Load() (*opsoft, error) {
 	var err error
 	com := new(opsoft)
 	ole.CoInitialize(0)
