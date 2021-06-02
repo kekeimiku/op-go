@@ -210,7 +210,7 @@ sim float32 相似度,取值范围0.1-1.0
 string 返回识别到的字符串
 */
 func (com *opsoft) OcrAuto(x1, y1, x2, y2 int, sim float32) string {
-	ret, _ := com.op.CallMethod("OcrEx", x1, y1, x2, y2, sim)
+	ret, _ := com.op.CallMethod("OcrAuto", x1, y1, x2, y2, sim)
 	return ret.ToString()
 }
 
@@ -234,7 +234,7 @@ sim float32 相似度,取值范围0.1-1.0
 string 返回识别到的字符串
 */
 func (com *opsoft) OcrFromFile(file_name, color_format string, sim float32) string {
-	ret, _ := com.op.CallMethod("OcrEx", file_name, color_format, sim)
+	ret, _ := com.op.CallMethod("OcrFromFile", file_name, color_format, sim)
 	return ret.ToString()
 }
 
@@ -256,6 +256,6 @@ sim float32 相似度,取值范围0.1-1.0
 string 返回识别到的字符串
 */
 func (com *opsoft) OcrAutoFromFile(color_format string, sim float32) string {
-	ret, _ := com.op.CallMethod("OcrEx", color_format, sim)
+	ret, _ := com.op.CallMethod("OcrAutoFromFile", color_format, sim)
 	return ret.ToString()
 }
