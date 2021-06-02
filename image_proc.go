@@ -17,7 +17,7 @@ x2 int 区域的右下X坐标.
 
 y2 int 区域的右下Y坐标.
 
-file int 保存的文件名.
+file string 保存的文件名.
 
 保存的地方一般为SetPath中设置的目录
 
