@@ -82,11 +82,77 @@ func (com *opsoft) FindStrEx(x1, y1, x2, y2 int, str, colorFormat string, sim fl
 }
 
 /*
+函数简介:
+
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,并且相似度为sim,sim取值范围(0.1-1.0),
+
+这个值越大越精确,越大速度越快,越小速度越慢,请斟酌使用!
+
+参数定义:
+
+x1 整形数:区域的左上X坐标.
+
+y1 整形数:区域的左上Y坐标.
+
+x2 整形数:区域的右下X坐标.
+
+y2 整形数:区域的右下Y坐标.
+
+color_format 字符串:颜色格式串.
+
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+
+int 0成功，1失败
+
+注: 此函数速度很慢，全局初始化时调用一次即可，切换字库用UseDict
+*/
+func (com *opsoft) Ocr(x1, y1, x2, y2 int, colorFormat string, sim float32) string {
+	ret, _ := com.op.CallMethod("Ocr", x1, y1, x2, y2, colorFormat, sim)
+	return ret.ToString()
+}
+
+/*
+函数简介:
+
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,并且相似度为sim,sim取值范围(0.1-1.0),
+
+这个值越大越精确,越大速度越快,越小速度越慢,请斟酌使用!
+
+这个函数可以返回识别到的字符串，以及每个字符的坐标.
+
+参数定义:
+
+x1 整形数:区域的左上X坐标.
+
+y1 整形数:区域的左上Y坐标.
+
+x2 整形数:区域的右下X坐标.
+
+y2 整形数:区域的右下Y坐标.
+
+color_format 字符串:颜色格式串.注意，RGB和HSV格式都支持.
+
+sim 双精度浮点数:相似度,取值范围0.1-1.0
+
+返回值:
+
+字符串: 返回识别到的字符串 格式如 "字符0$x0$y0|…|字符n$xn$yn"
+
+*/
+func (com *opsoft) OcrEx(x1, y1, x2, y2 int, colorFormat string, sim float32) string {
+	ret, _ := com.op.CallMethod("OcrEx", x1, y1, x2, y2, colorFormat, sim)
+	return ret.ToString()
+}
+
+/*
 设置字库文件
 
 参数定义:
 
 index int 字库的序号,取值为0-19,目前最多支持20个字库
+
 file string 字库文件名
 
 返回值:
@@ -98,4 +164,98 @@ int 0成功，1失败
 func (com *opsoft) SetDict(index int, file string) int {
 	ret, _ := com.op.CallMethod("SetDict", index, file)
 	return int(ret.Val)
+}
+
+/*
+函数简介:
+
+设置字库文件.
+
+设置之后，永久生效，除非再次设定.
+
+参数定义:
+
+ndex int 字库编号(0-9)
+
+返回值:
+
+int 0成功，1失败
+*/
+func (com *opsoft) UseDict(index int) int {
+	ret, _ := com.op.CallMethod("UseDict", index)
+	return int(ret.Val)
+}
+
+/*
+函数简介:
+
+识别屏幕范围(x1,y1,x2,y2)内的字符串,自动二值化，而无需指定颜色.
+
+适用于字体颜色和背景相差较大的场合.
+
+参数定义:
+
+x1 int:区域的左上X坐标.
+
+y1 int:区域的左上Y坐标.
+
+x2 int:区域的右下X坐标.
+
+y2 int:区域的右下Y坐标.
+
+sim float32 相似度,取值范围0.1-1.0
+
+返回值:
+
+string 返回识别到的字符串
+*/
+func (com *opsoft) OcrAuto(x1, y1, x2, y2 int, sim float32) string {
+	ret, _ := com.op.CallMethod("OcrEx", x1, y1, x2, y2, sim)
+	return ret.ToString()
+}
+
+/*
+函数简介:
+
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,并且相似度为sim,sim取值范围(0.1-1.0),
+
+这个值越大越精确,越大速度越快,越小速度越慢,请斟酌使用!
+
+参数定义:
+
+file_name string 文件名
+
+color_format string 颜色格式串.
+
+sim float32 相似度,取值范围0.1-1.0
+
+返回值:
+
+string 返回识别到的字符串
+*/
+func (com *opsoft) OcrFromFile(file_name, color_format string, sim float32) string {
+	ret, _ := com.op.CallMethod("OcrEx", file_name, color_format, sim)
+	return ret.ToString()
+}
+
+/*
+函数简介:
+
+识别屏幕范围(x1,y1,x2,y2)内符合color_format的字符串,自动二值化，而无需指定颜色
+
+适用于字体颜色和背景相差较大的场合
+
+参数定义:
+
+color_format string 颜色格式串.
+
+sim float32 相似度,取值范围0.1-1.0
+
+返回值:
+
+string 返回识别到的字符串
+*/
+func (com *opsoft) OcrAutoFromFile(color_format string, sim float32) string {
+	ret, _ := com.op.CallMethod("OcrEx", color_format, sim)
+	return ret.ToString()
 }
