@@ -19,3 +19,6 @@ func main() {
 	fmt.Println("当前版本", op.Ver())
 }
 ```
+
+一个低配版后台鼠标模式的“自瞄”小游戏例子
+[点我查看](./_exampl/exampl.mp4)
