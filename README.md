@@ -22,3 +22,5 @@ func main() {
 
 一个低配版后台鼠标模式的“自瞄”小游戏例子
 [点我查看](./_exampl/exampl.mp4)
+
+视频里的小游戏是 https://www.bilibili.com/video/BV1qW411q7QY?share_source=copy_web
