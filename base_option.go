@@ -9,7 +9,7 @@ package op
 
 字符串: 返回op.dll所在路径
 */
-func (com *opsoft) GetBasePath() string {
+func (com *Opsoft) GetBasePath() string {
 	ret, _ := com.op.CallMethod("GetBasePath")
 	return ret.ToString()
 }
@@ -23,7 +23,7 @@ func (com *opsoft) GetBasePath() string {
 
 整形数: 当前对象的ID值.
 */
-func (com *opsoft) GetID() int {
+func (com *Opsoft) GetID() int {
 	ret, _ := com.op.CallMethod("GetID")
 	return int(ret.Val)
 }
@@ -39,7 +39,7 @@ func (com *opsoft) GetID() int {
 
 注: 此函数必须紧跟上一句函数调用，中间任何的语句调用都会改变这个值.
 */
-func (com *opsoft) GetLastError() int {
+func (com *Opsoft) GetLastError() int {
 	ret, _ := com.op.CallMethod("GetLastError")
 	return int(ret.Val)
 }
@@ -53,7 +53,7 @@ func (com *opsoft) GetLastError() int {
 
 字符串: 以字符串的形式返回当前设置的全局路径
 */
-func (com *opsoft) GetPath() string {
+func (com *Opsoft) GetPath() string {
 	ret, _ := com.op.CallMethod("GetPath")
 	return ret.ToString()
 }
@@ -71,7 +71,7 @@ path 字符串: 路径,可以是相对路径,也可以是绝对路径
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) SetPath(path string) int {
+func (com *Opsoft) SetPath(path string) int {
 	ret, _ := com.op.CallMethod("SetPath", path)
 	return int(ret.Val)
 }
@@ -89,7 +89,7 @@ show 整形数: 0表示不打开,1表示打开，2表示将错误信息写入文
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) SetShowErrorMsg(show int) int {
+func (com *Opsoft) SetShowErrorMsg(show int) int {
 	ret, _ := com.op.CallMethod("SetShowErrorMsg", show)
 	return int(ret.Val)
 }
@@ -103,7 +103,7 @@ func (com *opsoft) SetShowErrorMsg(show int) int {
 
 字符串: 当前插件的版本描述字符串
 */
-func (com *opsoft) Ver() string {
+func (com *Opsoft) Ver() string {
 	ver, _ := com.op.CallMethod("Ver")
 	return ver.ToString()
 }
@@ -123,7 +123,7 @@ enable 整形数: 0 : 关闭 1 : 打开
 
 注: 有些时候，系统内存比较吃紧，这时候再打开内部缓存，可能会导致缓存分配在虚拟内存，这样频繁换页，反而导致图色效率下降.这时候就建议关闭图色缓存. 所有图色缓存机制都是对本对象的，也就是说，调用图色缓存机制的函数仅仅对本对象生效. 每个对象都有一个图色缓存队列.
 */
-func (com *opsoft) EnablePicCache(enable int) int {
+func (com *Opsoft) EnablePicCache(enable int) int {
 	ret, _ := com.op.CallMethod("EnablePicCache", enable)
 	return int(ret.Val)
 }

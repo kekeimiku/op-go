@@ -13,7 +13,7 @@ y int类型 返回Y坐标
 返回值:
 
 int类型 0失败，1成功 */
-func (com *opsoft) GetCursorPos(x, y *int) int {
+func (com *Opsoft) GetCursorPos(x, y *int) int {
 	intx := ole.NewVariant(ole.VT_I4, int64(*x))
 	inty := ole.NewVariant(ole.VT_I4, int64(*y))
 	ret, _ := com.op.CallMethod("GetCursorPos", &intx, &inty)
@@ -35,7 +35,7 @@ vk int类型 虚拟按键码
 
 int类型 0弹起，1按下
 */
-func (com *opsoft) GetKeyState(vk_code int) int {
+func (com *Opsoft) GetKeyState(vk_code int) int {
 	ret, _ := com.op.CallMethod("GetKeyState", vk_code)
 	return int(ret.Val)
 }
@@ -51,7 +51,7 @@ vk_code int 虚拟按键码
 
 int类型 0成功，1失败
 */
-func (com *opsoft) KeyDown(vk_code string) int {
+func (com *Opsoft) KeyDown(vk_code string) int {
 	ret, _ := com.op.CallMethod("KeyDown", vk_code)
 	return int(ret.Val)
 }
@@ -67,7 +67,7 @@ key_str string 字符串描述的键码. 大小写无所谓.
 
 int类型 0成功，1失败
 */
-func (com *opsoft) KeyDownChar(key_str string) int {
+func (com *Opsoft) KeyDownChar(key_str string) int {
 	ret, _ := com.op.CallMethod("KeyDownChar", key_str)
 	return int(ret.Val)
 }
@@ -83,7 +83,7 @@ vk_code int 虚拟按键码
 
 int类型 0成功，1失败
 */
-func (com *opsoft) KeyPress(vk_code int) int {
+func (com *Opsoft) KeyPress(vk_code int) int {
 	ret, _ := com.op.CallMethod("KeyPress", vk_code)
 	return int(ret.Val)
 }
@@ -99,7 +99,7 @@ key_str string 字符串描述的键码. 大小写无所谓.
 
 int类型 0成功，1失败
 */
-func (com *opsoft) KeyPressChar(key_str string) int {
+func (com *Opsoft) KeyPressChar(key_str string) int {
 	ret, _ := com.op.CallMethod("KeyPressChar", key_str)
 	return int(ret.Val)
 }
@@ -115,7 +115,7 @@ vk_code int 虚拟按键码.
 
 int类型 0成功，1失败
 */
-func (com *opsoft) KeyUp(vk_code int) int {
+func (com *Opsoft) KeyUp(vk_code int) int {
 	ret, _ := com.op.CallMethod("KeyUp", vk_code)
 	return int(ret.Val)
 }
@@ -131,7 +131,7 @@ key_str string 字符串描述的键码. 大小写无所谓.
 
 int类型 0成功，1失败
 */
-func (com *opsoft) KeyUpChar(key_str string) int {
+func (com *Opsoft) KeyUpChar(key_str string) int {
 	ret, _ := com.op.CallMethod("KeyUpChar", key_str)
 	return int(ret.Val)
 }
@@ -143,7 +143,7 @@ func (com *opsoft) KeyUpChar(key_str string) int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) LeftClick() int {
+func (com *Opsoft) LeftClick() int {
 	ret, _ := com.op.CallMethod("LeftClick")
 	return int(ret.Val)
 }
@@ -155,7 +155,7 @@ func (com *opsoft) LeftClick() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) LeftDoubleClick() int {
+func (com *Opsoft) LeftDoubleClick() int {
 	ret, _ := com.op.CallMethod("LeftDoubleClick")
 	return int(ret.Val)
 }
@@ -167,7 +167,7 @@ func (com *opsoft) LeftDoubleClick() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) LeftDown() int {
+func (com *Opsoft) LeftDown() int {
 	ret, _ := com.op.CallMethod("LeftDown")
 	return int(ret.Val)
 }
@@ -179,7 +179,7 @@ func (com *opsoft) LeftDown() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) LeftUp() int {
+func (com *Opsoft) LeftUp() int {
 	ret, _ := com.op.CallMethod("LeftUp")
 	return int(ret.Val)
 }
@@ -191,7 +191,7 @@ func (com *opsoft) LeftUp() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) MiddleClick() int {
+func (com *Opsoft) MiddleClick() int {
 	ret, _ := com.op.CallMethod("MiddleClick")
 	return int(ret.Val)
 }
@@ -203,7 +203,7 @@ func (com *opsoft) MiddleClick() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) MiddleDown() int {
+func (com *Opsoft) MiddleDown() int {
 	ret, _ := com.op.CallMethod("MiddleDown")
 	return int(ret.Val)
 }
@@ -215,7 +215,7 @@ func (com *opsoft) MiddleDown() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) MiddleUp() int {
+func (com *Opsoft) MiddleUp() int {
 	ret, _ := com.op.CallMethod("MiddleUp")
 	return int(ret.Val)
 }
@@ -232,7 +232,7 @@ ry int 相对于上次的Y偏移.
 
 int类型 0成功，1失败
 */
-func (com *opsoft) MoveR(rx, ry int) int {
+func (com *Opsoft) MoveR(rx, ry int) int {
 	ret, _ := com.op.CallMethod("MoveR", rx, ry)
 	return int(ret.Val)
 }
@@ -249,7 +249,7 @@ y int Y坐标.
 
 int类型 0成功，1失败
 */
-func (com *opsoft) MoveTo(x, y int) int {
+func (com *Opsoft) MoveTo(x, y int) int {
 	ret, _ := com.op.CallMethod("MoveTo", x, y)
 	return int(ret.Val)
 }
@@ -268,7 +268,7 @@ h int 高度(从y计算起)
 
 string 返回要移动到的目标点. 格式为x,y. 比如MoveToEx 100,100,10,10,返回值可能是101,102
 */
-func (com *opsoft) MoveToEx(x, y, w, h int) string {
+func (com *Opsoft) MoveToEx(x, y, w, h int) string {
 	ret, _ := com.op.CallMethod("MoveToEx", x, y, w, h)
 	return ret.ToString()
 }
@@ -280,7 +280,7 @@ func (com *opsoft) MoveToEx(x, y, w, h int) string {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) RightClick() int {
+func (com *Opsoft) RightClick() int {
 	ret, _ := com.op.CallMethod("RightClick")
 	return int(ret.Val)
 }
@@ -292,7 +292,7 @@ func (com *opsoft) RightClick() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) RightDown() int {
+func (com *Opsoft) RightDown() int {
 	ret, _ := com.op.CallMethod("RightDown")
 	return int(ret.Val)
 }
@@ -304,7 +304,7 @@ func (com *opsoft) RightDown() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) RightUp() int {
+func (com *Opsoft) RightUp() int {
 	ret, _ := com.op.CallMethod("RightUp")
 	return int(ret.Val)
 }
@@ -321,7 +321,7 @@ time_out int 等待多久,单位毫秒. 如果是0，表示一直等待
 
 int类型 0成功，1失败
 */
-func (com *opsoft) WaitKey(vk_code, timeOut int) int {
+func (com *Opsoft) WaitKey(vk_code, timeOut int) int {
 	ret, _ := com.op.CallMethod("SetSimMode", vk_code, timeOut)
 	return int(ret.Val)
 }
@@ -333,7 +333,7 @@ func (com *opsoft) WaitKey(vk_code, timeOut int) int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) WheelDown() int {
+func (com *Opsoft) WheelDown() int {
 	ret, _ := com.op.CallMethod("WheelDown")
 	return int(ret.Val)
 }
@@ -345,7 +345,7 @@ func (com *opsoft) WheelDown() int {
 
 int类型 0成功，1失败
 */
-func (com *opsoft) WheelUp() int {
+func (com *Opsoft) WheelUp() int {
 	ret, _ := com.op.CallMethod("WheelUp")
 	return int(ret.Val)
 }

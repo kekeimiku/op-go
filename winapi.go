@@ -13,7 +13,7 @@ mode int类型 模式 0普通模式，1加强模式
 
 int类型 0失败，1成功
 */
-func (com *opsoft) RunApp(path string, mode int) int {
+func (com *Opsoft) RunApp(path string, mode int) int {
 	ret, _ := com.op.CallMethod("RunApp", path, mode)
 	return int(ret.Val)
 }
@@ -31,7 +31,7 @@ dis int类型 模式 0隐藏，1用最近的大小和位置显示,
 
 int类型 0失败，1成功
 */
-func (com *opsoft) WinExec(path string, dis int) int {
+func (com *Opsoft) WinExec(path string, dis int) int {
 	ret, _ := com.op.CallMethod("WinExec", path, dis)
 	return int(ret.Val)
 }
@@ -49,7 +49,7 @@ time int类型 等待时间 毫秒
 
 string类型 cmd输出的字符
 */
-func (com *opsoft) GetCmdStr(path string, time int) string {
+func (com *Opsoft) GetCmdStr(path string, time int) string {
 	ret, _ := com.op.CallMethod("GetCmdStr", path, time)
 	return ret.ToString()
 }
