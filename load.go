@@ -14,7 +14,7 @@ func Load() (*Opsoft, error) {
 	var err error
 	com := new(Opsoft)
 	ole.CoInitialize(0)
-	com.uk, err = oleutil.CreateObject("op.Opsoft")
+	com.uk, err = oleutil.CreateObject("op.opsoft")
 	if err != nil {
 		return nil, err
 	}
