@@ -35,7 +35,7 @@ intY 变参指针:返回Y坐标没找到返回-1
 
 int 没找到返回-1, 比如"长安|洛阳",若找到长安，则返回0
 */
-func (com *opsoft) FindStr(x1, y1, x2, y2 int, str string, color_format string, sim float32, intX *int, intY *int) int {
+func (com *Opsoft) FindStr(x1, y1, x2, y2 int, str string, color_format string, sim float32, intX *int, intY *int) int {
 	x := ole.NewVariant(ole.VT_I4, 0)
 	y := ole.NewVariant(ole.VT_I4, 0)
 	ret, _ := com.op.CallMethod("FindStr", x1, y1, x2, y2, str, color_format, sim, &x, &y)
@@ -76,7 +76,7 @@ sim 双精度浮点数:相似度,取值范围0.1-1.0
 
 int 没找到返回-1, 比如"长安|洛阳",若找到长安，则返回0
 */
-func (com *opsoft) FindStrEx(x1, y1, x2, y2 int, str, colorFormat string, sim float32) string {
+func (com *Opsoft) FindStrEx(x1, y1, x2, y2 int, str, colorFormat string, sim float32) string {
 	ret, _ := com.op.CallMethod("FindStrEx", x1, y1, x2, y2, str, colorFormat, sim)
 	return ret.ToString()
 }
@@ -108,7 +108,7 @@ int 0成功，1失败
 
 注: 此函数速度很慢，全局初始化时调用一次即可，切换字库用UseDict
 */
-func (com *opsoft) Ocr(x1, y1, x2, y2 int, colorFormat string, sim float32) string {
+func (com *Opsoft) Ocr(x1, y1, x2, y2 int, colorFormat string, sim float32) string {
 	ret, _ := com.op.CallMethod("Ocr", x1, y1, x2, y2, colorFormat, sim)
 	return ret.ToString()
 }
@@ -141,7 +141,7 @@ sim 双精度浮点数:相似度,取值范围0.1-1.0
 字符串: 返回识别到的字符串 格式如 "字符0$x0$y0|…|字符n$xn$yn"
 
 */
-func (com *opsoft) OcrEx(x1, y1, x2, y2 int, colorFormat string, sim float32) string {
+func (com *Opsoft) OcrEx(x1, y1, x2, y2 int, colorFormat string, sim float32) string {
 	ret, _ := com.op.CallMethod("OcrEx", x1, y1, x2, y2, colorFormat, sim)
 	return ret.ToString()
 }
@@ -161,7 +161,7 @@ int 0成功，1失败
 
 注: 此函数速度很慢，全局初始化时调用一次即可，切换字库用UseDict
 */
-func (com *opsoft) SetDict(index int, file string) int {
+func (com *Opsoft) SetDict(index int, file string) int {
 	ret, _ := com.op.CallMethod("SetDict", index, file)
 	return int(ret.Val)
 }
@@ -181,7 +181,7 @@ ndex int 字库编号(0-9)
 
 int 0成功，1失败
 */
-func (com *opsoft) UseDict(index int) int {
+func (com *Opsoft) UseDict(index int) int {
 	ret, _ := com.op.CallMethod("UseDict", index)
 	return int(ret.Val)
 }
@@ -209,7 +209,7 @@ sim float32 相似度,取值范围0.1-1.0
 
 string 返回识别到的字符串
 */
-func (com *opsoft) OcrAuto(x1, y1, x2, y2 int, sim float32) string {
+func (com *Opsoft) OcrAuto(x1, y1, x2, y2 int, sim float32) string {
 	ret, _ := com.op.CallMethod("OcrAuto", x1, y1, x2, y2, sim)
 	return ret.ToString()
 }
@@ -233,7 +233,7 @@ sim float32 相似度,取值范围0.1-1.0
 
 string 返回识别到的字符串
 */
-func (com *opsoft) OcrFromFile(file_name, color_format string, sim float32) string {
+func (com *Opsoft) OcrFromFile(file_name, color_format string, sim float32) string {
 	ret, _ := com.op.CallMethod("OcrFromFile", file_name, color_format, sim)
 	return ret.ToString()
 }
@@ -255,7 +255,7 @@ sim float32 相似度,取值范围0.1-1.0
 
 string 返回识别到的字符串
 */
-func (com *opsoft) OcrAutoFromFile(color_format string, sim float32) string {
+func (com *Opsoft) OcrAutoFromFile(color_format string, sim float32) string {
 	ret, _ := com.op.CallMethod("OcrAutoFromFile", color_format, sim)
 	return ret.ToString()
 }

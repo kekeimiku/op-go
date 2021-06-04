@@ -37,7 +37,7 @@ mode 整形数: 模式
 
 整形数: 0:失败 1:成功
 */
-func (com *opsoft) BindWindow(hwnd int, display string, mouse string, keypad string, mode int) int {
+func (com *Opsoft) BindWindow(hwnd int, display string, mouse string, keypad string, mode int) int {
 	ret, _ := com.op.CallMethod("BindWindow", hwnd, display, mouse, keypad, mode)
 	return int(ret.Val)
 }
@@ -51,7 +51,7 @@ func (com *opsoft) BindWindow(hwnd int, display string, mouse string, keypad str
 
 整形数: 0:失败 1:成功
 */
-func (com *opsoft) UnBindWindow() int {
+func (com *Opsoft) UnBindWindow() int {
 	ret, _ := com.op.CallMethod("UnBindWindow")
 	return int(ret.Val)
 }

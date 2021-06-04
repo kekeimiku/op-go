@@ -27,7 +27,7 @@ file string 保存的文件名.
 
 int 0:失败 1:成功
 */
-func (com *opsoft) Capture(x1, y1, x2, y2 int, file string) int {
+func (com *Opsoft) Capture(x1, y1, x2, y2 int, file string) int {
 	ret, _ := com.op.CallMethod("Capture", x1, y1, x2, y2, file)
 	return int(ret.Val)
 }
@@ -51,7 +51,7 @@ sim float 相似度(0.1-1.0)
 
 int: 0: 颜色匹配 1: 颜色不匹配
 */
-func (com *opsoft) CmpColor(x int, y int, color string, sim float32) int {
+func (com *Opsoft) CmpColor(x int, y int, color string, sim float32) int {
 	ret, _ := com.op.CallMethod("CmpColor", x, y, color, sim)
 	return int(ret.Val)
 }
@@ -85,7 +85,7 @@ intY *int 返回Y坐标
 
 int 0:没找到 1:找到
 */
-func (com *opsoft) FindColor(x1, y1, x2, y2 int, color string, sim float32, dir int, intX *int, intY *int) int {
+func (com *Opsoft) FindColor(x1, y1, x2, y2 int, color string, sim float32, dir int, intX *int, intY *int) int {
 	x := ole.NewVariant(ole.VT_I4, 0)
 	y := ole.NewVariant(ole.VT_I4, 0)
 	ret, _ := com.op.CallMethod("FindColor", x1, y1, x2, y2, color, sim, dir, &x, &y)
@@ -119,7 +119,7 @@ dir int 查找方向 0: 从左到右,从上到下 1: 从左到右,从下到上 2
 
 string 返回所有颜色信息的坐标值,然后通过GetResultCount等接口来解析 (由于内存限制,返回的颜色数量最多为1800个左右)
 */
-func (com *opsoft) FindColorEx(x1, y1, x2, y2 int, color string, sim float32, dir int) string {
+func (com *Opsoft) FindColorEx(x1, y1, x2, y2 int, color string, sim float32, dir int) string {
 	ret, _ := com.op.CallMethod("FindColorEx", x1, y1, x2, y2, color, sim, dir)
 	return ret.ToString()
 }
@@ -163,7 +163,7 @@ intY 变参指针:返回Y坐标(坐标为first_color所在坐标)
 
 整形数: 0:没找到 1:找到
 */
-func (com *opsoft) FindMultiColor(x1, y1, x2, y2 int, firstColor string, offsetColor string, sim float32, dir int, intX, intY *int) int {
+func (com *Opsoft) FindMultiColor(x1, y1, x2, y2 int, firstColor string, offsetColor string, sim float32, dir int, intX, intY *int) int {
 	x := ole.NewVariant(ole.VT_I4, 0)
 	y := ole.NewVariant(ole.VT_I4, 0)
 	ret, _ := com.op.CallMethod("FindMultiColor", x1, y1, x2, y2, firstColor, offsetColor, sim, dir, &x, &y)
@@ -211,7 +211,7 @@ sim 双精度浮点数:相似度,取值范围0.1-1.0 dir 整形数:查找方向 
 
 坐标是first_color所在的坐标
 */
-func (com *opsoft) FindMultiColorEx(x1, y1, x2, y2 int, firstColor string, offsetColor string, sim float32, dir int) string {
+func (com *Opsoft) FindMultiColorEx(x1, y1, x2, y2 int, firstColor string, offsetColor string, sim float32, dir int) string {
 	ret, _ := com.op.CallMethod("FindMultiColorEx", x1, y1, x2, y2, firstColor, offsetColor, sim, dir)
 	return ret.ToString()
 }
@@ -249,7 +249,7 @@ intY 变参指针:返回图片左上角的Y坐标
 
 整形数: 返回找到的图片的序号,从0开始索引.如果没找到返回-1
 */
-func (com *opsoft) FindPic(x1, y1, x2, y2 int, picName string, deltaColor string, sim float32, dir int, intX, intY *int) int {
+func (com *Opsoft) FindPic(x1, y1, x2, y2 int, picName string, deltaColor string, sim float32, dir int, intX, intY *int) int {
 	x := ole.NewVariant(ole.VT_I4, 0)
 	y := ole.NewVariant(ole.VT_I4, 0)
 	ret, _ := com.op.CallMethod("FindPic", x1, y1, x2, y2, picName, deltaColor, sim, dir, &x, &y)
@@ -291,7 +291,7 @@ dir 整形数:查找方向 0: 从左到右,从上到下 1: 从左到右,从下�
 
 比如"0,100,20|2,30,40" 表示找到了两个,第一个,对应的图片是图像序号为0的图片,坐标是(100,20),第二个是序号为2的图片,坐标(30,40) (由于内存限制,返回的图片数量最多为1500个左右)
 */
-func (com *opsoft) FindPicEx(x1, y1, x2, y2 int, picName string, deltaColor string, sim float32, dir int) string {
+func (com *Opsoft) FindPicEx(x1, y1, x2, y2 int, picName string, deltaColor string, sim float32, dir int) string {
 	ret, _ := com.op.CallMethod("FindPicEx", x1, y1, x2, y2, picName, deltaColor, sim, dir)
 	return ret.ToString()
 }
@@ -313,7 +313,7 @@ y 整形数:Y坐标
 
 比如"0,100,20|2,30,40" 表示找到了两个,第一个,对应的图片是图像序号为0的图片,坐标是(100,20),第二个是序号为2的图片,坐标(30,40) (由于内存限制,返回的图片数量最多为1500个左右)
 */
-func (com *opsoft) EnableGetColorByCapture(enable int) int {
+func (com *Opsoft) EnableGetColorByCapture(enable int) int {
 	ret, _ := com.op.CallMethod("EnableGetColorByCapture", enable)
 	return int(ret.Val)
 }
@@ -331,7 +331,7 @@ file 字符串:保存的文件名,保存的地方一般为SetPath中设置的目
 
 整形数: 0:失败 1:成功
 */
-func (com *opsoft) CapturePre(file string) int {
+func (com *Opsoft) CapturePre(file string) int {
 	ret, _ := com.op.CallMethod("CapturePre", file)
 	return int(ret.Val)
 }
@@ -349,7 +349,7 @@ enable_debug 整形数: 0 为关闭 1 为开启
 
 整形数: 0:失败 1:成功
 */
-func (com *opsoft) EnableDisplayDebug(enableDebug int) int {
+func (com *Opsoft) EnableDisplayDebug(enableDebug int) int {
 	ret, _ := com.op.CallMethod("EnableDisplayDebug", enableDebug)
 	return int(ret.Val)
 }
@@ -373,7 +373,7 @@ y2 整形数:区域的右下Y坐标
 
 整形数: 返回的是指定区域的二进制颜色数据地址,每个颜色是4个字节,表示方式为(BBGGRR00)
 */
-func (com *opsoft) GetScreenData(x1, y1, x2, y2 int) int {
+func (com *Opsoft) GetScreenData(x1, y1, x2, y2 int) int {
 	ret, _ := com.op.CallMethod("GetScreenData", x1, y1, x2, y2)
 	return int(ret.Val)
 }
@@ -401,7 +401,7 @@ size 变参指针:返回图片的数据长度
 
 整形数: 0 : 失败 1 : 成功
 */
-func (com *opsoft) GetScreenDataBmp(x1, y1, x2, y2 int, data, size *int) int {
+func (com *Opsoft) GetScreenDataBmp(x1, y1, x2, y2 int, data, size *int) int {
 	d := ole.NewVariant(ole.VT_I4, 0)
 	s := ole.NewVariant(ole.VT_I4, 0)
 	ret, _ := com.op.CallMethod("GetScreenDataBmp", x1, y1, x2, y2, &data, &size)
@@ -434,7 +434,7 @@ mode 字符串: 图色输入模式取值有以下几种
 
 整形数: 0 : 失败 1 : 成功
 */
-func (com *opsoft) SetDisplayInput(mode string) int {
+func (com *Opsoft) SetDisplayInput(mode string) int {
 	ret, _ := com.op.CallMethod("SetDisplayInput", mode)
 	return int(ret.Val)
 }

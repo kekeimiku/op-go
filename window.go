@@ -17,7 +17,7 @@ y 变参指针: 窗口Y坐标
 
 int 0 失败，1 成功
 */
-func (com *opsoft) ClientToScreen(hwnd int, x, y *int) int {
+func (com *Opsoft) ClientToScreen(hwnd int, x, y *int) int {
 	intx := ole.NewVariant(ole.VT_I4, int64(*x))
 	inty := ole.NewVariant(ole.VT_I4, int64(*y))
 	ret, _ := com.op.CallMethod("ClientToScreen", hwnd, &intx, &inty)
@@ -41,7 +41,7 @@ name 字符串:进程名,比如qq.exe
 
 字符串 : 返回所有匹配的进程PID,并按打开顺序排序,格式"pid1,pid2,pid3"
 */
-func (com *opsoft) EnumProcess(name string) string {
+func (com *Opsoft) EnumProcess(name string) string {
 	ret, _ := com.op.CallMethod("EnumProcess", name)
 	return ret.ToString()
 }
@@ -79,7 +79,7 @@ filter整形数: 取值定义如下
 
 字符串 : 返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
 */
-func (com *opsoft) EnumWindow(parent int, title, className string, filter int) string {
+func (com *Opsoft) EnumWindow(parent int, title, className string, filter int) string {
 	ret, _ := com.op.CallMethod("EnumWindow", parent, title, className, filter)
 	return ret.ToString()
 }
@@ -113,7 +113,7 @@ filter 整形数: 取值定义如下
 
 字符串: 返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
 */
-func (com *opsoft) EnumWindowByProcessId(pid int, title, className string, filter int) string {
+func (com *Opsoft) EnumWindowByProcessId(pid int, title, className string, filter int) string {
 	ret, _ := com.op.CallMethod("EnumWindowByProcessId", pid, title, className, filter)
 	return ret.ToString()
 }
@@ -195,7 +195,7 @@ sort 整形数: 取值如下
 
 字符串: 返回所有匹配的窗口句柄字符串,格式"hwnd1,hwnd2,hwnd3"
 */
-func (com *opsoft) EnumWindowSuper(spec1 string, flag1, type1 int, spec2 string, flag2, type2, sort int) string {
+func (com *Opsoft) EnumWindowSuper(spec1 string, flag1, type1 int, spec2 string, flag2, type2, sort int) string {
 	ret, _ := com.op.CallMethod("EnumWindowSuper", spec1, flag1, type1, spec2, flag2, type2, sort)
 	return ret.ToString()
 }
@@ -215,7 +215,7 @@ title 字符串: 窗口标题,如果为空，则匹配所有.这里的匹配是�
 
 整形数: 整形数表示的窗口句柄，没找到返回0.
 */
-func (com *opsoft) FindWindow(class, title string) int {
+func (com *Opsoft) FindWindow(class, title string) int {
 	ret, _ := com.op.CallMethod("FindWindow", class, title)
 	return int(ret.Val)
 }
@@ -237,7 +237,7 @@ title 字符串: 窗口标题,如果为空，则匹配所有.这里的匹配是�
 
 整形数: 整形数表示的窗口句柄，没找到返回0.
 */
-func (com *opsoft) FindWindowByProcess(processName, class, title string) int {
+func (com *Opsoft) FindWindowByProcess(processName, class, title string) int {
 	ret, _ := com.op.CallMethod("FindWindowByProcess", processName, class, title)
 	return int(ret.Val)
 }
@@ -259,7 +259,7 @@ title 字符串: 窗口标题,如果为空，则匹配所有.这里的匹配是�
 
 整形数: 整形数表示的窗口句柄，没找到返回0.
 */
-func (com *opsoft) FindWindowByProcessId(processId int, class, title string) int {
+func (com *Opsoft) FindWindowByProcessId(processId int, class, title string) int {
 	ret, _ := com.op.CallMethod("FindWindowByProcessId", processId, class, title)
 	return int(ret.Val)
 }
@@ -281,7 +281,7 @@ title 字符串: 窗口标题,如果为空，则匹配所有. 这里的匹配是
 
 整形数: 整形数表示的窗口句柄，没找到返回0.
 */
-func (com *opsoft) FindWindowEx(parent int, class, title string) int {
+func (com *Opsoft) FindWindowEx(parent int, class, title string) int {
 	ret, _ := com.op.CallMethod("FindWindowEx", parent, class, title)
 	return int(ret.Val)
 }
@@ -357,7 +357,7 @@ type2 整形数: 取值如下
 
 整形数: 整形数表示的窗口句柄，没找到返回0
 */
-func (com *opsoft) FindWindowSuper(spec1 string, flag1, type1 int, spec2 string, flag2, type2 int) int {
+func (com *Opsoft) FindWindowSuper(spec1 string, flag1, type1 int, spec2 string, flag2, type2 int) int {
 	ret, _ := com.op.CallMethod("FindWindowSuper", spec1, flag1, type1, spec2, flag2, type2)
 	return int(ret.Val)
 }
@@ -383,7 +383,7 @@ y2 变参指针: 返回窗口客户区右下角Y坐标
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) GetClientRect(hwnd int, x1, y1, x2, y2 *int) int {
+func (com *Opsoft) GetClientRect(hwnd int, x1, y1, x2, y2 *int) int {
 	intx1 := ole.NewVariant(ole.VT_I4, int64(*x1))
 	inty1 := ole.NewVariant(ole.VT_I4, int64(*y1))
 	intx2 := ole.NewVariant(ole.VT_I4, int64(*x2))
@@ -417,7 +417,7 @@ height 变参指针: 高度
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) GetClientSize(hwnd int, width, height *int) int {
+func (com *Opsoft) GetClientSize(hwnd int, width, height *int) int {
 	pWidth := ole.NewVariant(ole.VT_I4, int64(*width))
 	pHeight := ole.NewVariant(ole.VT_I4, int64(*height))
 	ret, _ := com.op.CallMethod("GetClientSize", hwnd, &pWidth, &pHeight)
@@ -437,7 +437,7 @@ func (com *opsoft) GetClientSize(hwnd int, width, height *int) int {
 
 整形数: 返回整型表示的窗口句柄
 */
-func (com *opsoft) GetForegroundFocus() int {
+func (com *Opsoft) GetForegroundFocus() int {
 	ret, _ := com.op.CallMethod("GetForegroundFocus")
 	return int(ret.Val)
 }
@@ -451,7 +451,7 @@ func (com *opsoft) GetForegroundFocus() int {
 
 整形数: 返回整型表示的窗口句柄
 */
-func (com *opsoft) GetForegroundWindow() int {
+func (com *Opsoft) GetForegroundWindow() int {
 	ret, _ := com.op.CallMethod("GetForegroundWindow")
 	return int(ret.Val)
 }
@@ -465,7 +465,7 @@ func (com *opsoft) GetForegroundWindow() int {
 
 整形数: 返回整型表示的窗口句柄
 */
-func (com *opsoft) GetMousePointWindow() int {
+func (com *Opsoft) GetMousePointWindow() int {
 	ret, _ := com.op.CallMethod("GetMousePointWindow")
 	return int(ret.Val)
 }
@@ -485,7 +485,7 @@ Y 整形数: 屏幕Y坐标.
 
 整形数: 返回整型表示的窗口句柄.
 */
-func (com *opsoft) GetPointWindow(x, y int) int {
+func (com *Opsoft) GetPointWindow(x, y int) int {
 	ret, _ := com.op.CallMethod("GetPointWindow", x, y)
 	return int(ret.Val)
 }
@@ -503,7 +503,7 @@ pid 整形数: 进程pid.
 
 字符串: 格式"进程名|进程路径|cpu|内存"
 */
-func (com *opsoft) GetProcessInfo(pid int) string {
+func (com *Opsoft) GetProcessInfo(pid int) string {
 	ret, _ := com.op.CallMethod("GetProcessInfo", pid)
 	return ret.ToString()
 }
@@ -525,7 +525,7 @@ Flag 整形数: 取值定义如下
 
 整形数: 以整型数表示的窗口句柄
 */
-func (com *opsoft) GetSpecialWindow(flag int) int {
+func (com *Opsoft) GetSpecialWindow(flag int) int {
 	ret, _ := com.op.CallMethod("GetSpecialWindow", flag)
 	return int(ret.Val)
 }
@@ -543,7 +543,7 @@ hwnd 整形数: 指定的窗口句柄
 
 字符串: 窗口的类名
 */
-func (com *opsoft) GetWindowClass(hwnd int) string {
+func (com *Opsoft) GetWindowClass(hwnd int) string {
 	ret, _ := com.op.CallMethod("GetWindowClass", hwnd)
 	return ret.ToString()
 }
@@ -561,7 +561,7 @@ hwnd 整形数: 窗口句柄
 
 整形数: 返回整型表示的是进程ID
 */
-func (com *opsoft) GetWindowProcessId(hwnd int) int {
+func (com *Opsoft) GetWindowProcessId(hwnd int) int {
 	ret, _ := com.op.CallMethod("GetWindowProcessId", hwnd)
 	return int(ret.Val)
 }
@@ -579,7 +579,7 @@ hwnd 整形数: 窗口句柄
 
 字符串: 返回字符串表示的是exe全路径名
 */
-func (com *opsoft) GetWindowProcessPath(hwnd int) string {
+func (com *Opsoft) GetWindowProcessPath(hwnd int) string {
 	ret, _ := com.op.CallMethod("GetWindowProcessPath", hwnd)
 	return ret.ToString()
 }
@@ -605,7 +605,7 @@ y2 变参指针: 返回窗口右下角Y坐标
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) GetWindowRect(hwnd int, x1, y1, x2, y2 *int) int {
+func (com *Opsoft) GetWindowRect(hwnd int, x1, y1, x2, y2 *int) int {
 	intx1 := ole.NewVariant(ole.VT_I4, int64(*x1))
 	inty1 := ole.NewVariant(ole.VT_I4, int64(*y1))
 	intx2 := ole.NewVariant(ole.VT_I4, int64(*x2))
@@ -655,7 +655,7 @@ flag 整形数: 取值定义如下
 
 整形数: 0: 不满足条件 1: 满足条件
 */
-func (com *opsoft) GetWindowState(hwnd, flag int) int {
+func (com *Opsoft) GetWindowState(hwnd, flag int) int {
 	ret, _ := com.op.CallMethod("GetWindowState", hwnd, flag)
 	return int(ret.Val)
 }
@@ -673,7 +673,7 @@ hwnd 整形数: 指定的窗口句柄
 
 字符串: 窗口的标题
 */
-func (com *opsoft) GetWindowTitle(hwnd int) string {
+func (com *Opsoft) GetWindowTitle(hwnd int) string {
 	ret, _ := com.op.CallMethod("GetWindowTitle", hwnd)
 	return ret.ToString()
 }
@@ -695,7 +695,7 @@ y 整形数: Y坐标
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) MoveWindow(hwnd, x, y int) int {
+func (com *Opsoft) MoveWindow(hwnd, x, y int) int {
 	ret, _ := com.op.CallMethod("MoveWindow", hwnd, x, y)
 	return int(ret.Val)
 }
@@ -717,7 +717,7 @@ y 变参指针: 屏幕Y坐标
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) ScreenToClient(hwnd int, x, y *int) int {
+func (com *Opsoft) ScreenToClient(hwnd int, x, y *int) int {
 	intx := ole.NewVariant(ole.VT_I4, int64(*x))
 	inty := ole.NewVariant(ole.VT_I4, int64(*y))
 	ret, _ := com.op.CallMethod("ScreenToClient", hwnd, &intx, &inty)
@@ -743,7 +743,7 @@ hwnd 整形数: 指定的窗口句柄
 
 注:剪贴板是公共资源，多个线程同时设置剪贴板时,会产生冲突，必须用互斥信号保护.
 */
-func (com *opsoft) SendPaste(hwnd int) int {
+func (com *Opsoft) SendPaste(hwnd int) int {
 	ret, _ := com.op.CallMethod("SendPaste", hwnd)
 	return int(ret.Val)
 }
@@ -769,7 +769,7 @@ str 字符串: 发送的文本数据
 
 目标程序里可能安装了改变当前编码的软件，比如常见的是输入法. （尝试卸载）
 */
-func (com *opsoft) SendString(hwnd int, str string) int {
+func (com *Opsoft) SendString(hwnd int, str string) int {
 	ret, _ := com.op.CallMethod("SendString", hwnd, str)
 	return int(ret.Val)
 }
@@ -791,7 +791,7 @@ height 整形数: 高度
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) SetClientSize(hwnd, width, height int) int {
+func (com *Opsoft) SetClientSize(hwnd, width, height int) int {
 	ret, _ := com.op.CallMethod("SetClientSize", hwnd, width, height)
 	return int(ret.Val)
 }
@@ -813,7 +813,7 @@ height 整形数: 高度
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) SetWindowSize(hwnd, width, height int) int {
+func (com *Opsoft) SetWindowSize(hwnd, width, height int) int {
 	ret, _ := com.op.CallMethod("SetWindowSize", hwnd, width, height)
 	return int(ret.Val)
 }
@@ -865,7 +865,7 @@ flag 整形数: 取值定义如下
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) SetWindowState(hwnd, flag int) int {
+func (com *Opsoft) SetWindowState(hwnd, flag int) int {
 	ret, _ := com.op.CallMethod("SetWindowState", hwnd, flag)
 	return int(ret.Val)
 }
@@ -885,7 +885,7 @@ titie 字符串: 标题
 
 整形数: 0: 失败 1: 成功
 */
-func (com *opsoft) SetWindowText(hwnd int, title string) int {
+func (com *Opsoft) SetWindowText(hwnd int, title string) int {
 	ret, _ := com.op.CallMethod("SetWindowText", hwnd, title)
 	return int(ret.Val)
 }
@@ -907,7 +907,7 @@ trans 整形数: 透明度取值(0-255) 越小透明度越大 0为完全透明(�
 
 注 : 此接口不支持WIN98
 */
-func (com *opsoft) SetWindowTransparent(hwnd, trans int) int {
+func (com *Opsoft) SetWindowTransparent(hwnd, trans int) int {
 	ret, _ := com.op.CallMethod("SetWindowTransparent", hwnd, trans)
 	return int(ret.Val)
 }

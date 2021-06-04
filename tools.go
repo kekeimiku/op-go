@@ -25,7 +25,7 @@ endY 整形数:目的坐标Y
 
 int 0 失败，1 成功
 */
-func (com *opsoft) AStarFindPath(mapWidth, mapHeight int, disable_points string, beginX, beginY, endX, endY int) int {
+func (com *Opsoft) AStarFindPath(mapWidth, mapHeight int, disable_points string, beginX, beginY, endX, endY int) int {
 	ret, _ := com.op.CallMethod("AStarFindPath", mapWidth, mapHeight, disable_points, beginX, beginY, endX, endY)
 	return int(ret.Val)
 }
