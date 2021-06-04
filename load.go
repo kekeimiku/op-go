@@ -10,6 +10,7 @@ type Opsoft struct {
 	uk *ole.IUnknown
 }
 
+//加载op
 func Load() (*Opsoft, error) {
 	var err error
 	com := new(Opsoft)

@@ -19,7 +19,7 @@ y2 int 区域的右下Y坐标.
 
 str string 待查找的字符串,可以是字符串组合，比如"长安|洛阳|大雁塔",中间用"|"来分割字符串.
 
-color_format string 颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.
+colorFormat string 颜色格式串, 可以包含换行分隔符,语法是","后加分割字符串. 具体可以查看下面的示例.
 
 注意，RGB和HSV格式都支持.
 
@@ -35,10 +35,10 @@ intY 变参指针:返回Y坐标没找到返回-1
 
 int 没找到返回-1, 比如"长安|洛阳",若找到长安，则返回0
 */
-func (com *Opsoft) FindStr(x1, y1, x2, y2 int, str string, color_format string, sim float32, intX *int, intY *int) int {
+func (com *Opsoft) FindStr(x1, y1, x2, y2 int, str string, colorFormat string, sim float32, intX *int, intY *int) int {
 	x := ole.NewVariant(ole.VT_I4, 0)
 	y := ole.NewVariant(ole.VT_I4, 0)
-	ret, _ := com.op.CallMethod("FindStr", x1, y1, x2, y2, str, color_format, sim, &x, &y)
+	ret, _ := com.op.CallMethod("FindStr", x1, y1, x2, y2, str, colorFormat, sim, &x, &y)
 	*intX = int(x.Val)
 	*intY = int(y.Val)
 	x.Clear()
@@ -132,7 +132,7 @@ x2 整形数:区域的右下X坐标.
 
 y2 整形数:区域的右下Y坐标.
 
-color_format 字符串:颜色格式串.注意，RGB和HSV格式都支持.
+colorFormat 字符串:颜色格式串.注意，RGB和HSV格式都支持.
 
 sim 双精度浮点数:相似度,取值范围0.1-1.0
 
@@ -223,9 +223,9 @@ func (com *Opsoft) OcrAuto(x1, y1, x2, y2 int, sim float32) string {
 
 参数定义:
 
-file_name string 文件名
+fileName string 文件名
 
-color_format string 颜色格式串.
+colorFormat string 颜色格式串.
 
 sim float32 相似度,取值范围0.1-1.0
 
@@ -233,8 +233,8 @@ sim float32 相似度,取值范围0.1-1.0
 
 string 返回识别到的字符串
 */
-func (com *Opsoft) OcrFromFile(file_name, color_format string, sim float32) string {
-	ret, _ := com.op.CallMethod("OcrFromFile", file_name, color_format, sim)
+func (com *Opsoft) OcrFromFile(fileName, colorFormat string, sim float32) string {
+	ret, _ := com.op.CallMethod("OcrFromFile", fileName, colorFormat, sim)
 	return ret.ToString()
 }
 
@@ -247,7 +247,7 @@ func (com *Opsoft) OcrFromFile(file_name, color_format string, sim float32) stri
 
 参数定义:
 
-color_format string 颜色格式串.
+colorFormat string 颜色格式串.
 
 sim float32 相似度,取值范围0.1-1.0
 
@@ -255,7 +255,7 @@ sim float32 相似度,取值范围0.1-1.0
 
 string 返回识别到的字符串
 */
-func (com *Opsoft) OcrAutoFromFile(color_format string, sim float32) string {
-	ret, _ := com.op.CallMethod("OcrAutoFromFile", color_format, sim)
+func (com *Opsoft) OcrAutoFromFile(colorFormat string, sim float32) string {
+	ret, _ := com.op.CallMethod("OcrAutoFromFile", colorFormat, sim)
 	return ret.ToString()
 }

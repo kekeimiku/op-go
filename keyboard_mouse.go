@@ -29,14 +29,14 @@ func (com *Opsoft) GetCursorPos(x, y *int) int {
 
 参数定义:
 
-vk int类型 虚拟按键码
+vkCode int类型 虚拟按键码
 
 返回值:
 
 int类型 0弹起，1按下
 */
-func (com *Opsoft) GetKeyState(vk_code int) int {
-	ret, _ := com.op.CallMethod("GetKeyState", vk_code)
+func (com *Opsoft) GetKeyState(vkCode int) int {
+	ret, _ := com.op.CallMethod("GetKeyState", vkCode)
 	return int(ret.Val)
 }
 
@@ -45,14 +45,14 @@ func (com *Opsoft) GetKeyState(vk_code int) int {
 
 参数定义:
 
-vk_code int 虚拟按键码
+vkCode int 虚拟按键码
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) KeyDown(vk_code string) int {
-	ret, _ := com.op.CallMethod("KeyDown", vk_code)
+func (com *Opsoft) KeyDown(vkCode string) int {
+	ret, _ := com.op.CallMethod("KeyDown", vkCode)
 	return int(ret.Val)
 }
 
@@ -61,14 +61,14 @@ func (com *Opsoft) KeyDown(vk_code string) int {
 
 参数定义:
 
-key_str string 字符串描述的键码. 大小写无所谓.
+keyStr string 字符串描述的键码. 大小写无所谓.
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) KeyDownChar(key_str string) int {
-	ret, _ := com.op.CallMethod("KeyDownChar", key_str)
+func (com *Opsoft) KeyDownChar(keyStr string) int {
+	ret, _ := com.op.CallMethod("KeyDownChar", keyStr)
 	return int(ret.Val)
 }
 
@@ -77,14 +77,14 @@ func (com *Opsoft) KeyDownChar(key_str string) int {
 
 参数定义:
 
-vk_code int 虚拟按键码
+vkCode int 虚拟按键码
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) KeyPress(vk_code int) int {
-	ret, _ := com.op.CallMethod("KeyPress", vk_code)
+func (com *Opsoft) KeyPress(vkCode int) int {
+	ret, _ := com.op.CallMethod("KeyPress", vkCode)
 	return int(ret.Val)
 }
 
@@ -93,14 +93,14 @@ func (com *Opsoft) KeyPress(vk_code int) int {
 
 参数定义:
 
-key_str string 字符串描述的键码. 大小写无所谓.
+keyStr string 字符串描述的键码. 大小写无所谓.
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) KeyPressChar(key_str string) int {
-	ret, _ := com.op.CallMethod("KeyPressChar", key_str)
+func (com *Opsoft) KeyPressChar(keyStr string) int {
+	ret, _ := com.op.CallMethod("KeyPressChar", keyStr)
 	return int(ret.Val)
 }
 
@@ -109,14 +109,14 @@ func (com *Opsoft) KeyPressChar(key_str string) int {
 
 参数定义:
 
-vk_code int 虚拟按键码.
+vkCode int 虚拟按键码.
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) KeyUp(vk_code int) int {
-	ret, _ := com.op.CallMethod("KeyUp", vk_code)
+func (com *Opsoft) KeyUp(vkCode int) int {
+	ret, _ := com.op.CallMethod("KeyUp", vkCode)
 	return int(ret.Val)
 }
 
@@ -125,14 +125,14 @@ func (com *Opsoft) KeyUp(vk_code int) int {
 
 参数定义:
 
-key_str string 字符串描述的键码. 大小写无所谓.
+keyStr string 字符串描述的键码. 大小写无所谓.
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) KeyUpChar(key_str string) int {
-	ret, _ := com.op.CallMethod("KeyUpChar", key_str)
+func (com *Opsoft) KeyUpChar(keyStr string) int {
+	ret, _ := com.op.CallMethod("KeyUpChar", keyStr)
 	return int(ret.Val)
 }
 
@@ -314,15 +314,15 @@ func (com *Opsoft) RightUp() int {
 
 参数定义:
 
-vk_code int 虚拟按键码,当此值为0，表示等待任意按键。 鼠标左键是1,鼠标右键时2,鼠标中键是4.
-time_out int 等待多久,单位毫秒. 如果是0，表示一直等待
+vkCode int 虚拟按键码,当此值为0，表示等待任意按键。 鼠标左键是1,鼠标右键时2,鼠标中键是4.
+timeOut int 等待多久,单位毫秒. 如果是0，表示一直等待
 
 返回值:
 
 int类型 0成功，1失败
 */
-func (com *Opsoft) WaitKey(vk_code, timeOut int) int {
-	ret, _ := com.op.CallMethod("SetSimMode", vk_code, timeOut)
+func (com *Opsoft) WaitKey(vkCode, timeOut int) int {
+	ret, _ := com.op.CallMethod("SetSimMode", vkCode, timeOut)
 	return int(ret.Val)
 }
 
