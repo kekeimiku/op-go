@@ -7,7 +7,7 @@
 
 # 使用
 
-下载 https://github.com/WallBreaker2/op/releases 最新版，解压后运行里面的`install.bat`。
+go get github.com/kekeimiku/op-go
 
 # 例子
 
