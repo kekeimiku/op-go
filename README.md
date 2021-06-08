@@ -4,7 +4,10 @@
 - [ ] 详细简洁的注释文档 
 - [ ] 一键打包所有静态文件
 - [ ] 包含基本功能的图形界面api
-- [ ] 单元测试
+
+# 使用
+
+下载 https://github.com/WallBreaker2/op/releases 最新版，解压后运行里面的`install.bat`。
 
 # 例子
 
