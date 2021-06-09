@@ -5,10 +5,6 @@
 - [ ] 一键打包所有静态文件
 - [ ] 包含基本功能的图形界面api
 
-# 使用
-
-go get github.com/kekeimiku/op-go
-
 # 例子
 
 ```go
