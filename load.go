@@ -26,6 +26,7 @@ func Load() (*Opsoft, error) {
 	return com, nil
 }
 
+//释放
 func (com *Opsoft) Release() {
 	com.uk.Release()
 	com.op.Release()
